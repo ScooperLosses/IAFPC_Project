@@ -1,0 +1,50 @@
+package com.example.dijkstraproject;
+
+import java.util.*;
+
+public class DijkstraClass {
+
+    static class Node {
+        int id;
+        int distance;
+
+        Node(int id, int distance) {
+            this.id = id;
+            this.distance = distance;
+        }
+    }
+
+    // Algoritmul lui Dijkstra
+    public static int[] runDijkstra(int start, List<Map<Integer, Integer>> graph) {
+        int n = graph.size();
+        int[] distances = new int[n];
+        Arrays.fill(distances, Integer.MAX_VALUE);
+        distances[start] = 0;
+
+        PriorityQueue<Node> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(node -> node.distance));
+        priorityQueue.add(new Node(start, 0));
+
+        Set<Integer> processed = new HashSet<>();
+
+        while (!priorityQueue.isEmpty()) {
+            Node node = priorityQueue.poll();
+            int u = node.id;
+
+            if (!processed.add(u)) {
+                continue;
+            }
+
+            for (Map.Entry<Integer, Integer> entry : graph.get(u).entrySet()) {
+                int v = entry.getKey();
+                int weight = entry.getValue();
+
+                if (distances[u] + weight < distances[v]) {
+                    distances[v] = distances[u] + weight;
+                    priorityQueue.add(new Node(v, distances[v]));
+                }
+            }
+        }
+
+        return distances;
+    }
+}

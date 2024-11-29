@@ -1,0 +1,41 @@
+
+/*Butoane*/
+.button {
+    -fx-background-color: #e7e6e6;
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+    -fx-padding: 5px 10px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 15px;
+}
+
+.button:hover {
+    -fx-background-color: #bbbbbb;
+    -fx-transition: background-color 10.5 ease;
+}
+
+.button:pressed {
+    -fx-background-color: #807d7d;
+    -fx-transition: background-color 0.5s ease;
+}
+
+
+/* Input text */
+.text-field {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 20px;
+    -fx-border-color: gray;
+    -fx-border-radius: 20px;
+    -fx-padding: 10px;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused {
+    -fx-background-color: #e0e0e0;
+    -fx-border-color: #0078d4;
+}
+
+
+.root{
+    -fx-background-color: white;
+}
